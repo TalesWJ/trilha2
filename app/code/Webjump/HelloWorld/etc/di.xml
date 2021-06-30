@@ -1,0 +1,33 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\Action\Action">
+        <plugin name="webjump_helloworld_dispatchaction" type="Webjump\HelloWorld\Plugin\ActionDispatchPlugin"/>
+    </type>
+
+    <virtualType name="Webjump\HelloWorld\Model\CustomDebug" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/custom-debug.log</argument>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Webjump\HelloWorld\Model\CustomLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Webjump\HelloWorld\Model\CustomDebug</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Webjump\HelloWorld\Plugin\ActionDispatchPlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">Webjump\HelloWorld\Model\CustomLogger</argument>
+        </arguments>
+    </type>
+
+    <type name="Webjump\HelloWorld\Observer\CAPreDispatchObserver">
+        <arguments>
+            <argument name="logger" xsi:type="object">Webjump\HelloWorld\Model\CustomLogger</argument>
+        </arguments>
+    </type>
+
+</config>
