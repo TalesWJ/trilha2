@@ -30,4 +30,18 @@
         </arguments>
     </type>
 
+    <type name="Webjump\HelloWorld\Cron\CronExample">
+        <arguments>
+            <argument name="logger" xsi:type="object">Webjump\HelloWorld\Model\CustomLogger</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="helloworld_commandexample" xsi:type="object">Webjump\HelloWorld\Console\Command\CommandExample</item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>
