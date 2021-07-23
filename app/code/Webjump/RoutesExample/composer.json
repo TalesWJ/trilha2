@@ -1,5 +1,5 @@
 {
-    "name": "webjump/helloworld",
+    "name": "webjump/routesexample",
     "description": "N/A",
     "type": "magento2-module",
     "config": {
@@ -13,7 +13,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Webjump\\HelloWorld\\": ""
+            "Webjump\\RoutesExample\\": ""
         }
     }
 }

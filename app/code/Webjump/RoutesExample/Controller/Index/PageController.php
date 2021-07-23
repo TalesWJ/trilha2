@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExampleCorp\RoutingExample\Controller\Index;
+namespace Webjump\RoutesExample\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -39,10 +39,6 @@ class PageController extends Action implements HttpGetActionInterface
      */
     public function execute()
     {
-        // Get the params that were passed from our Router
-        $firstParam = $this->getRequest()->getParam('first_param', null);
-        $secondParam = $this->getRequest()->getParam('second_param', null);
-
         return $this->pageFactory->create();
     }
 }
