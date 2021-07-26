@@ -1,0 +1,20 @@
+{
+    "name": "webjump/apiexample",
+    "description": "N/A",
+    "type": "magento2-module",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "~7.3.0||~7.4.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webjump\\ApiExample\\": ""
+        }
+    }
+}
+
