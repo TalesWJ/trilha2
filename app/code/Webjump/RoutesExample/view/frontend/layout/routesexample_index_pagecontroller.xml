@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Exemplo Tema</title>
+    </head>
+    <body>
+        <container name="containerExample">
+            <block class="Webjump\RoutesExample\Block\Example\BlockExample" name="contact.form" as="contact_form" template="Webjump_RoutesExample::form_example/form.phtml"/>
+        </container>
+        <move element="containerExample" destination="main" />
+        <referenceBlock name="header.container" remove="true"/>
+    </body>
+</page>
+
+

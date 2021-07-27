@@ -1,0 +1,30 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \Webjump\RoutesExample\Block\Example\BlockExample $block */
+?>
+<form class="form contact"
+      id="contact-form"
+      method="post"
+      action="">
+    <fieldset class="fieldset">
+        <div class="field email required">
+            <label class="label" for="subject"><span>Subject</span></label>
+            <div class="control">
+                <select name="subject" id="subject" class="input-text" title="subject">
+                    <option value="">Selecione</option>
+                    <?php foreach($block->getValues() as $value) { ?>
+                        <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="Submit" class="action submit primary">
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</form>

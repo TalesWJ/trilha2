@@ -1,0 +1,23 @@
+{
+    "description": "Example Theme",
+    "license": "Copyright",
+    "name": "webjump/themexample",
+    "type": "magento2-theme",
+    "authors": [
+        {
+            "email": "tales.duque@webjump.com.br",
+            "name": "Tales Faceroli duque"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}
