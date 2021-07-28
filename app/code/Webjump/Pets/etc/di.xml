@@ -1,0 +1,10 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webjump\Pets\Api\Data\PetInterface" type="Webjump\Pets\Model\Pet"/>
+    <preference for="Webjump\Pets\Api\PetRepositoryInterface" type="Webjump\Pets\Model\PetRepository"/>
+    <type name="Webjump\Pets\Model\PetRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor</argument>
+            <argument name="resultFactory" xsi:type="object">Magento\Framework\Api\Search\SearchResultFactory</argument>
+        </arguments>
+    </type>
+</config>

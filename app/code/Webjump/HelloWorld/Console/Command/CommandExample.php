@@ -13,6 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CommandExample extends Command
 {
+
     public const NAME_ARGUMENT = 'name';
 
     /**
@@ -32,6 +33,11 @@ class CommandExample extends Command
         parent::configure();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int|void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $name = $input->getOption(self::NAME_ARGUMENT);

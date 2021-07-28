@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="pet_table" resource="default" engine="innodb"
+           comment="Pets Backend Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="owner_id" unsigned="true" nullable="false" identity="false"
+                comment="Owner ID"/>
+        <column xsi:type="varchar" name="pet_name" length="255" nullable="false"
+                comment="Pet Name"/>
+        <column xsi:type="varchar" name="pet_owner" length="255" nullable="false"
+                comment="Pet Owner"/>
+        <column xsi:type="varchar" name="owner_telephone" length="255" nullable="true"
+                comment="Pet Owner's Telephone"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <constraint xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" table="pet_table" column="owner_id"
+                    referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique">
+            <column name="entity_id"/>
+        </constraint>
+        <index indexType="btree">
+            <column name="entity_id"/>
+            <column name="owner_id"/>
+            <column name="pet_name"/>
+            <column name="pet_owner"/>
+            <column name="owner_telephone"/>
+            <column name="created_at"/>
+        </index>
+    </table>
+</schema>
