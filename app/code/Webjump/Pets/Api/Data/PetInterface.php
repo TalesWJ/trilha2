@@ -24,7 +24,7 @@ interface PetInterface
      *
      * @return int
      */
-    public function getEntityId(): int;
+    public function getPetId(): int;
 
     /**
      * Get owner ID
@@ -71,7 +71,7 @@ interface PetInterface
      * @param int $id
      * @return $this
      */
-    public function setEntityId(int $id): PetInterface;
+    public function setPetId(int $id): PetInterface;
 
     /**
      * Set Owner ID

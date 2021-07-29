@@ -74,7 +74,6 @@ class PetRepository implements PetRepositoryInterface
         } catch (\Exception $e) {
             throw new CouldNotSaveException($e->getMessage());
         }
-
         return $pet;
     }
 

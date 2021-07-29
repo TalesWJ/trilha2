@@ -19,7 +19,7 @@ class Pet extends AbstractModel implements PetInterface
     /**
      * @return int
      */
-    public function getEntityId(): int
+    public function getPetId(): int
     {
         return (int)$this->getData(static::ENTITY_ID);
     }
@@ -28,7 +28,7 @@ class Pet extends AbstractModel implements PetInterface
      * @param int $id
      * @return $this
      */
-    public function setEntityId(int $id): self
+    public function setPetId(int $id): self
     {
         $this->setData(static::ENTITY_ID, $id);
     }
