@@ -66,10 +66,10 @@ class AddPet implements DataPatchInterface
     {
         $this->moduleDataSetup->startSetup();
         $petDTO = $this->petFactory->create();
-        $petDTO->setPetName('Laura Rezende');
-        $petDTO->setPetOwner('Cacau');
-        $petDTO->setOwnerTelephone('5532988291039');
-        $petDTO->setOwnerId(2);
+        $petDTO->setPetName('Carlos Duque');
+        $petDTO->setPetOwner('Amendoim');
+        $petDTO->setOwnerTelephone('5532988312356');
+        $petDTO->setOwnerId(3);
         $this->petRepository->save($petDTO);
         $this->moduleDataSetup->endSetup();
         return $this;
