@@ -8,7 +8,7 @@ use Webjump\Pets\Api\Data\PetInterface;
 
 class Pet extends AbstractDb
 {
-    const SCHEMA_NAME = 'pet_table';
+    const SCHEMA_NAME = 'pet_kind';
 
     public function _construct()
     {

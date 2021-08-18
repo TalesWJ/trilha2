@@ -9,6 +9,10 @@ use Webjump\Pets\Api\Data\PetInterface;
 class Pet extends AbstractModel implements PetInterface
 {
     /**
+     * @var string
+     */
+    protected $_eventPrefix = 'webjump_ibgecode_ibge';
+    /**
      * @inheritdoc
      */
     protected function _construct()
@@ -19,7 +23,7 @@ class Pet extends AbstractModel implements PetInterface
     /**
      * @return int
      */
-    public function getPetId(): int
+    public function getKindId(): int
     {
         return (int)$this->getData(static::ENTITY_ID);
     }
@@ -28,41 +32,26 @@ class Pet extends AbstractModel implements PetInterface
      * @param int $id
      * @return $this
      */
-    public function setPetId(int $id): self
+    public function setKindId(int $id): self
     {
         $this->setData(static::ENTITY_ID, $id);
-    }
-
-    /**
-     * @return int
-     */
-    public function getOwnerId(): int
-    {
-        return (int)$this->getData(static::OWNER_ID);
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getPetName(): string
+    public function getName(): string
     {
-        return (string)$this->getData(static::PETNAME);
+        return (string)$this->getData(static::NAME);
     }
 
     /**
      * @return string
      */
-    public function getPetOwner(): string
+    public function getDescription(): string
     {
-        return (string)$this->getData(static::PETOWNER);
-    }
-
-    /**
-     * @return string
-     */
-    public function getOwnerTelephone(): string
-    {
-        return (string)$this->getData(static::OWNERTELEPHONE);
+        return (string)$this->getData(static::DESCRIPTION);
     }
 
     /**
@@ -82,42 +71,22 @@ class Pet extends AbstractModel implements PetInterface
     }
 
     /**
-     * @param int $id
-     * @return PetInterface
+     * @param string $name
+     * @return PetInterface|$this
      */
-    public function setOwnerId(int $id): PetInterface
+    public function setName(string $name): PetInterface
     {
-        $this->setData(static::OWNER_ID, $id);
+        $this->setData(static::NAME, $name);
         return $this;
     }
 
     /**
-     * @param string $petName
+     * @param string $description
      * @return PetInterface|$this
      */
-    public function setPetName(string $petName): PetInterface
+    public function setDescription(string $description): PetInterface
     {
-        $this->setData(static::PETNAME, $petName);
-        return $this;
-    }
-
-    /**
-     * @param string $petOwner
-     * @return PetInterface|$this
-     */
-    public function setPetOwner(string $petOwner): PetInterface
-    {
-        $this->setData(static::PETOWNER, $petOwner);
-        return $this;
-    }
-
-    /**
-     * @param string $ownerTelephone
-     * @return PetInterface|$this
-     */
-    public function setOwnerTelephone(string $ownerTelephone): PetInterface
-    {
-        $this->setData(static::OWNERTELEPHONE, $ownerTelephone);
+        $this->setData(static::DESCRIPTION, $description);
         return $this;
     }
 

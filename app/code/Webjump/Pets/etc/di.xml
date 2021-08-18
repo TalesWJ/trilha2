@@ -7,4 +7,21 @@
             <argument name="resultFactory" xsi:type="object">Magento\Framework\Api\Search\SearchResultFactory</argument>
         </arguments>
     </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="pet_kind_listing_data_source" xsi:type="string">Webjump\Pets\Model\ResourceModel\Collection\Grid\Pets</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webjump\Pets\Model\ResourceModel\Collection\Grid\Pets"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pet_kind</argument>
+            <argument name="resourceModel" xsi:type="string">Webjump\Pets\Model\ResourceModel\Pet</argument>
+        </arguments>
+    </virtualType>
+
 </config>
