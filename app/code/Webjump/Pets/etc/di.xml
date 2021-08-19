@@ -11,7 +11,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="pet_kind_listing_data_source" xsi:type="string">Webjump\Pets\Model\ResourceModel\Collection\Grid\Pets</item>
+                <item name="pet_kind_data_source" xsi:type="string">Webjump\Pets\Model\ResourceModel\Collection\Grid\Pets</item>
             </argument>
         </arguments>
     </type>

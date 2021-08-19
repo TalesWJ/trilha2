@@ -17,7 +17,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Webjump_Pets::webjumppets" title="Pets">
                     <resource id="Webjump_Pets::list" title="List Pet Kinds" />
-                    <resource id="Webjump_Pets::create" title="Add Pet Kinds"/>
+                    <resource id="Webjump_Pets::new" title="Add Pet Kinds"/>
                 </resource>
             </resource>
         </resources>

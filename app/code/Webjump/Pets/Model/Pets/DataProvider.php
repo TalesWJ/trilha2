@@ -1,11 +1,8 @@
 <?php
-/**
- * Importante esse DataProvider estar em Model.
- */
 
 declare(strict_types=1);
 
-namespace Webjump\Pets\Ui\DataProvider;
+namespace Webjump\Pets\Model\Pets;
 
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Webjump\Pets\Model\ResourceModel\Pet\CollectionFactory;
@@ -26,7 +23,7 @@ class DataProvider extends AbstractDataProvider
     /**
      * @var array
      */
-    private array $loadedData;
+    private array $loadedData = [];
 
     /**
      * DataProvider's constructor

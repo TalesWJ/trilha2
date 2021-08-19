@@ -1,0 +1,8 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/webjump-pets/pets" method="POST">
+        <service class="Webjump\Pets\Api\PetRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Webjump_Pets::new"/>
+        </resources>
+    </route>
+</routes>

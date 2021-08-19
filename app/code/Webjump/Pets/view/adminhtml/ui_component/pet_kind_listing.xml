@@ -2,19 +2,29 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">pet_kind_listing.pet_kind_listing_data_source</item>
-            <item name="deps" xsi:type="string">pet_kind_listing.pet_kind_listing_data_source</item>
+            <item name="provider" xsi:type="string">pet_kind_listing.pet_kind_data_source</item>
+            <item name="deps" xsi:type="string">pet_kind_listing.pet_kind_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">pet_kind_columns</item>
     </argument>
-    <dataSource name="pet_kind_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add Pet Kind</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="pet_kind_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">id</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="pet_kind_listing_data_source">
+        <aclResource>Webjump_Pets::list</aclResource>
+        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="pet_kind_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>

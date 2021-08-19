@@ -7,6 +7,7 @@ use Magento\Framework\Api\Search\SearchResultFactory;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\Pets\Api\PetRepositoryInterface;
 use Webjump\Pets\Model\ResourceModel\Pet as ResourceModel;
 use Webjump\Pets\Api\Data\PetInterface;
@@ -80,12 +81,15 @@ class PetRepository implements PetRepositoryInterface
     /**
      * @param int $petId
      * @return PetInterface
+     * @throws NoSuchEntityException
      */
     public function getById(int $petId): PetInterface
     {
         $pet = $this->petFactory->create();
         $this->resourceModel->load($pet, $petId, PetInterface::ENTITY_ID);
-
+        if (!$pet->getId()) {
+            throw new NoSuchEntityException(__('The Pet Kind with the "%1" ID doesn\'t exist.', $petId));
+        }
         return $pet;
     }
 

@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Webjump_Pets::webjumppets" resource="Webjump_Pets::webjumppets" module="Webjump_Pets" title="Pets" sortOrder="20"/>
-        <add id="Webjump_Pets::list" resource="Webjump_Pets::list" module="Webjump_Pets" parent="Webjump_Pets::webjumppets" title="List Pet Kinds" sortOrder="10" action="pets/pet/petkind"/>
-        <add id="Webjump_Pets::create" resource="Webjump_Pets::create" module="Webjump_Pets" parent="Webjump_Pets::webjumppets" title="Add Pet Kind" sortOrder="20" action="pets/pet/addkind"/>
+        <add id="Webjump_Pets::webjumppets" resource="Webjump_Pets::list" module="Webjump_Pets" title="Pets" sortOrder="20" action="pets/pet/petkind"/>
     </menu>
 </config>

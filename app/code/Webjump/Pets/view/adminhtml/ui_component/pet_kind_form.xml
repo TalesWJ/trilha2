@@ -3,22 +3,31 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">pet_kind_form.pet_kind_form_data_source</item>
-            <item name="namespace" xsi:type="string">pet_kind_form</item>
         </item>
+        <item name="spinner" xsi:type="string">pet_kind_columns</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
     </argument>
     <settings>
+        <buttons>
+            <button name="save" class="Webjump\Pets\Block\Adminhtml\Pets\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/*/petkind"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <deps>
+            <dep>pet_kind_form.pet_kind_form_data_source</dep>
+        </deps>
         <namespace>pet_kind_form</namespace>
+        <dataScope>data</dataScope>
     </settings>
-    <dataSource name="pet_kind_form_data_source">
-        <argument name="data" xsi:type="array">
-            <item name="js_config" xsi:type="array">
-                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
-            </item>
-        </argument>
+    <dataSource name="pet_kind_form_data_source" component="Magento_Ui/js/form/provider">
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="Webjump\Pets\Ui\DataProvider\PetKind\DataProvider" name="pet_kind_form_data_source">
+        <aclResource>Webjump_Pets::new</aclResource>
+        <dataProvider class="Webjump\Pets\Model\Pets\DataProvider" name="pet_kind_form_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -44,7 +53,7 @@
         <field name="name" formElement="input" sortOrder="10">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">name</item>
+                    <item name="source" xsi:type="string">pet_kind</item>
                 </item>
             </argument>
             <settings>
@@ -59,7 +68,7 @@
         <field name="description" formElement="input" sortOrder="20">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Description</item>
+                    <item name="source" xsi:type="string">pet_kind</item>
                 </item>
             </argument>
             <settings>
@@ -67,7 +76,7 @@
                 <label translate="true">Description</label>
                 <dataScope>description</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
         </field>
