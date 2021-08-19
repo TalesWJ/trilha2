@@ -9,6 +9,8 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\Pets\Api\Data\PetInterfaceFactory;
 use Webjump\Pets\Api\Data\PetInterface;
 use Webjump\Pets\Api\PetRepositoryInterface;
@@ -36,10 +38,12 @@ class Save extends Action implements HttpPostActionInterface
 
 
     /**
-     * Save constructor
+     * Save Action constructor
      *
      * @param Context $context
      * @param RedirectFactory $redirectFactory
+     * @param PetRepositoryInterface $petRepository
+     * @param PetInterfaceFactory $petFactory
      */
     public function __construct(
         Context $context,
@@ -54,12 +58,34 @@ class Save extends Action implements HttpPostActionInterface
     }
 
     /**
+     * Execute form save
+     *
      * @return Redirect
      */
     public function execute(): Redirect
     {
         /** @var Redirect $resultRedirect */
         $resultRedirect = $this->redirectFactory->create();
+        $postResult = $this->getRequest()->getPostValue();
+        $petKind = $this->petFactory->create();
+        $petKindId = $postResult['entity_id'];
+        if ($petKindId) {
+            try {
+                $petKindId = $this->petRepository->getById($petKindId);
+            } catch (NoSuchEntityException $e) {
+                $this->messageManager->addErrorMessage(__('This PetKind does not exist.'));
+                return $resultRedirect->setPath('*/*/petkind');
+            }
+        }
+
+        try {
+            $petKind->setName($postResult['name']);
+            $petKind->setDescription($postResult['description']);
+            $this->petRepository->save($petKind);
+            $this->messageManager->addSuccessMessage(__('Success! Pet Kind was saved with no errors.'));
+        } catch (CouldNotSaveException $e) {
+            $this->messageManager->addErrorMessage(__('Something went wrong when saving the Pet Kind'));
+        }
 
         return $resultRedirect->setPath('*/*/petkind');
     }

@@ -36,7 +36,7 @@
     </dataSource>
     <fieldset name="general">
         <settings>
-            <label>General</label>
+            <label>Add/Edit Pet Kind</label>
         </settings>
         <field name="entity_id" formElement="input">
             <argument name="data" xsi:type="array">

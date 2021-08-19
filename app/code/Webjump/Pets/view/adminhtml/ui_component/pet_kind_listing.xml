@@ -64,6 +64,11 @@
                 <label translate="true">Created At</label>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Webjump\Pets\Ui\Component\Listing\Column\Actions" sortOrder="60">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
 

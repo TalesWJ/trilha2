@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Webjump\Pets\Ui\Component\Listing\Column;
 
+use Magento\Framework\Url;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Framework\Url;
+use Magento\Framework\UrlInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 class Actions extends Column
@@ -12,19 +15,19 @@ class Actions extends Column
     /**
      * @var UrlInterface
      */
-    protected $_urlBuilder;
+    private $urlBuilder;
 
     /**
      * @var string
      */
-    protected $_viewUrl;
+    protected $viewUrl;
 
     /**
      * Constructor
      *
-     * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
-     * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
-     * @param \Magento\Framework\Url $urlBuilder
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param Url $urlBuilder
      * @param string $viewUrl
      * @param array $components
      * @param array $data
@@ -37,8 +40,8 @@ class Actions extends Column
         array $components = [],
         array $data = []
     ) {
-        $this->_urlBuilder = $urlBuilder;
-        $this->_viewUrl    = $viewUrl;
+        $this->urlBuilder = $urlBuilder;
+        $this->viewUrl    = $viewUrl;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -50,18 +53,43 @@ class Actions extends Column
      */
     public function prepareDataSource(array $dataSource): array
     {
-        if (isset($dataSource['data']['items'])) {
-            foreach ($dataSource['data']['items'] as &$item) {
-                $name = $this->getData('name');
-                if (isset($item['entity_id'])) {
-                    $item[$name]['view']   = [
-                        'href'  => $this->_urlBuilder->getUrl($this->_viewUrl, ['id' => $item['entity_id']]),
-                        'target' => '_blank',
-                        'label' => __('View on Frontend')
-                    ];
-                }
-            }
+        $dataSource = parent::prepareDataSource($dataSource);
+        if (!isset($dataSource['data']['items'])) {
+            return $dataSource;
         }
+
+        foreach ($dataSource['data']['items'] as $item) {
+            $name = $item['name'];
+            $editUrl = $this->urlBuilder->getUrl(
+                'pet/petkind/edit',
+                ['entity_id' => $item['entity_id']]
+            );
+
+            $deleteUrl = $this->urlBuilder->getUrl(
+                'pet/petkind/delete',
+                ['entity_id' => $item['entity_id']]
+            );
+
+            $item[$this->getData('name')] = [
+                'edit' => [
+                    'href' => $editUrl,
+                    'label' => __('Edit'),
+                    'hidden' => false,
+                    '__disableTmpl' => true
+                ],
+                'delete' => [
+                    'href' => $deleteUrl,
+                    'label' => __('Delete'),
+                    'confirm' => [
+                        'title' => __('Delete %1', $name),
+                        'message' => __('Are you sure you want to delete %1', $name)
+                    ],
+                    'post' => true,
+                    '__disableTmpl' => true
+                ]
+            ];
+        }
+
         return $dataSource;
     }
 }

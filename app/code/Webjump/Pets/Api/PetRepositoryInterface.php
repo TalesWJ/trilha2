@@ -37,4 +37,10 @@ interface PetRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria): SearchResultInterface;
 
+    /**
+     * Delete Pet Kind
+     *
+     * @param PetInterface $pet
+     */
+    public function delete(PetInterface $pet): void;
 }
