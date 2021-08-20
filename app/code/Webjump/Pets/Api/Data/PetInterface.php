@@ -19,9 +19,9 @@ interface PetInterface
     /**
      * Get ID
      *
-     * @return int
+     * @return mixed
      */
-    public function getKindId(): int;
+    public function getEntityId();
 
 
     /**
@@ -52,10 +52,10 @@ interface PetInterface
     /**
      * Set ID
      *
-     * @param int $id
+     * @param int $entityId
      * @return $this
      */
-    public function setKindId(int $id): PetInterface;
+    public function setEntityId($entityId): PetInterface;
 
     /**
      * Set kind name

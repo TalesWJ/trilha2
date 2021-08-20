@@ -69,7 +69,7 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->redirectFactory->create();
         $postResult = $this->getRequest()->getPostValue();
         $petKind = $this->petFactory->create();
-        $petKindId = $postResult['entity_id'];
+        $petKindId = $this->getRequest()->getParam('entity_id');
         if ($petKindId) {
             try {
                 $petKindId = $this->petRepository->getById((int)$petKindId);

@@ -9,10 +9,6 @@ use Webjump\Pets\Api\Data\PetInterface;
 class Pet extends AbstractModel implements PetInterface
 {
     /**
-     * @var string
-     */
-    protected $_eventPrefix = 'webjump_ibgecode_ibge';
-    /**
      * @inheritdoc
      */
     protected function _construct()
@@ -21,20 +17,20 @@ class Pet extends AbstractModel implements PetInterface
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getKindId(): int
+    public function getEntityId()
     {
-        return (int)$this->getData(static::ENTITY_ID);
+        return $this->getData(static::ENTITY_ID);
     }
 
     /**
-     * @param int $id
+     * @param int $entityId
      * @return $this
      */
-    public function setKindId(int $id): self
+    public function setEntityId($entityId): self
     {
-        $this->setData(static::ENTITY_ID, $id);
+        $this->setData(static::ENTITY_ID, $entityId);
         return $this;
     }
 

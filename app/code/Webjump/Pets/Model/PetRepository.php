@@ -125,4 +125,26 @@ class PetRepository implements PetRepositoryInterface
         }
     }
 
+    /**
+     * Delete by ID
+     *
+     * @param int $petId
+     * @throws CouldNotDeleteException
+     * @throws NoSuchEntityException
+     * @return void
+     */
+    public function deleteById(int $petId): void
+    {
+        try {
+            $pet = $this->getById($petId);
+            try {
+                $this->delete($pet);
+            } catch (CouldNotDeleteException $delete) {
+                throw new CouldNotDeleteException(__($delete->getMessage()));
+            }
+        } catch (NoSuchEntityException $noSuchEntityException) {
+            throw new NoSuchEntityException(__($noSuchEntityException->getMessage()));
+        }
+    }
+
 }

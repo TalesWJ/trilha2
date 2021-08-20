@@ -4,6 +4,8 @@ namespace Webjump\Pets\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Webjump\Pets\Api\Data\PetInterface;
 
 /**
@@ -41,6 +43,17 @@ interface PetRepositoryInterface
      * Delete Pet Kind
      *
      * @param PetInterface $pet
+     * @return void
      */
     public function delete(PetInterface $pet): void;
+
+    /**
+     * Delete by Id
+     *
+     * @param int $petId
+     * @throws CouldNotDeleteException
+     * @throws NoSuchEntityException
+     * @return void
+     */
+    public function deleteById(int $petId): void;
 }
