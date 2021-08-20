@@ -21,6 +21,7 @@ use Webjump\Pets\Api\PetRepositoryInterface;
  */
 class Save extends Action implements HttpPostActionInterface
 {
+    public const ADMIN_RESOURCE = 'Webjump_Pets::save';
     /**
      * @var RedirectFactory
      */

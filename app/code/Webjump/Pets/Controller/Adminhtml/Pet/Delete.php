@@ -18,6 +18,7 @@ use Magento\Framework\Controller\Result\RedirectFactory;
  */
 class Delete extends Action implements HttpPostActionInterface
 {
+    public const ADMIN_RESOURCE = 'Webjump_Pets::delete';
     /**
      * @var PetRepositoryInterface
      */

@@ -18,6 +18,7 @@ use Magento\Framework\Controller\ResultInterface;
  */
 class Edit extends Action implements HttpGetActionInterface
 {
+    public const ADMIN_RESOURCE = 'Webjump_Pets::edit';
     /**
      * @var PetRepositoryInterface
      */

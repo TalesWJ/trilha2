@@ -18,6 +18,9 @@
                 <resource id="Webjump_Pets::webjumppets" title="Pets">
                     <resource id="Webjump_Pets::list" title="List Pet Kinds" />
                     <resource id="Webjump_Pets::new" title="Add Pet Kinds"/>
+                    <resource id="Webjump_Pets::edit" title="Edit Pet Kinds"/>
+                    <resource id="Webjump_Pets::delete" title="Delete Pet Kinds"/>
+                    <resource id="Webjump_Pets::save" title="Save Pet Kinds"/>
                 </resource>
             </resource>
         </resources>

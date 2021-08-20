@@ -14,6 +14,7 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends Action implements HttpGetActionInterface
 {
+    public const ADMIN_RESOURCE = 'Webjump_Pets::list';
     /**
      * @var PageFactory
      */

@@ -14,6 +14,7 @@ use Magento\Framework\Controller\ResultInterface;
  */
 class NewAction extends Action implements HttpGetActionInterface
 {
+    public const ADMIN_RESOURCE = 'Webjump_Pets::new';
     /**
      * Execute action based on request and return result
      *
