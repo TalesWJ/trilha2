@@ -11,7 +11,7 @@
         <buttons>
             <button name="save" class="Webjump\Pets\Block\Adminhtml\Pets\Edit\SaveButton"/>
             <button name="back">
-                <url path="*/*/petkind"/>
+                <url path="*/*/"/>
                 <class>back</class>
                 <label translate="true">Back</label>
             </button>

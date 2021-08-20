@@ -67,6 +67,8 @@
         <actionsColumn name="actions" class="Webjump\Pets\Ui\Component\Listing\Column\Actions" sortOrder="60">
             <settings>
                 <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
             </settings>
         </actionsColumn>
     </columns>

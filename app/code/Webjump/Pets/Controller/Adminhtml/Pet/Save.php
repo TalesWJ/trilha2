@@ -71,22 +71,21 @@ class Save extends Action implements HttpPostActionInterface
         $petKindId = $postResult['entity_id'];
         if ($petKindId) {
             try {
-                $petKindId = $this->petRepository->getById($petKindId);
+                $petKindId = $this->petRepository->getById((int)$petKindId);
             } catch (NoSuchEntityException $e) {
                 $this->messageManager->addErrorMessage(__('This PetKind does not exist.'));
-                return $resultRedirect->setPath('*/*/petkind');
+                return $resultRedirect->setPath('*/*/');
             }
         }
 
         try {
-            $petKind->setName($postResult['name']);
-            $petKind->setDescription($postResult['description']);
+            $petKind->setData($postResult);
             $this->petRepository->save($petKind);
             $this->messageManager->addSuccessMessage(__('Success! Pet Kind was saved with no errors.'));
         } catch (CouldNotSaveException $e) {
             $this->messageManager->addErrorMessage(__('Something went wrong when saving the Pet Kind'));
         }
 
-        return $resultRedirect->setPath('*/*/petkind');
+        return $resultRedirect->setPath('*/*/');
     }
 }

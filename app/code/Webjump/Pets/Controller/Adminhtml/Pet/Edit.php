@@ -50,12 +50,12 @@ class Edit extends Action implements HttpGetActionInterface
 
         if ($petKindId) {
             try {
-                $this->petRepository->getById($petKindId);
+                $this->petRepository->getById((int)$petKindId);
             } catch (NoSuchEntityException $exception) {
                 $this->messageManager->addErrorMessage(__($exception->getMessage()));
                 /** @var Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
-                return $resultRedirect->setPath('*/*/petkind');
+                return $resultRedirect->setPath('*/*/');
             }
         }
 

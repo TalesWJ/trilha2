@@ -49,17 +49,17 @@ class Delete extends Action implements HttpPostActionInterface
 
         if (!$petKindId) {
             $this->messageManager->addErrorMessage(__("We could not find the desired Pet Kind."));
-            return $resultRedirect->setPath('*/*/petkind');
+            return $resultRedirect->setPath('*/*/');
         }
 
         try {
-            $petKind = $this->petRepository->getById($petKindId);
+            $petKind = $this->petRepository->getById((int)$petKindId);
             $this->petRepository->delete($petKind);
             $this->messageManager->addSuccessMessage(__('Success! Pet Kind was saved with no errors.'));
-            return $resultRedirect->setPath('*/*/petkind');
+            return $resultRedirect->setPath('*/*/');
         } catch (CouldNotDeleteException $e) {
             $this->messageManager->addErrorMessage(__("Could not delete the Pet Kind."));
-            return $resultRedirect->setPath('*/*/petkind');
+            return $resultRedirect->setPath('*/*/');
         }
     }
 }

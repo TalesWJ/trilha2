@@ -12,7 +12,7 @@ use Magento\Framework\View\Result\PageFactory;
 /**
  * Class Index
  */
-class PetKind extends Action implements HttpGetActionInterface
+class Index extends Action implements HttpGetActionInterface
 {
     /**
      * @var PageFactory
