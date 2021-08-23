@@ -5,4 +5,22 @@
             <resource ref="Webjump_Pets::new"/>
         </resources>
     </route>
+    <route url="/V1/webjump-pets/pets/:petId" method="GET">
+        <service class="Webjump\Pets\Api\PetRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Webjump_Pets::list"/>
+        </resources>
+    </route>
+    <route url="/V1/webjump-pets/pets/:petId" method="DELETE">
+        <service class="Webjump\Pets\Api\PetRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Webjump_Pets::delete"/>
+        </resources>
+    </route>
+    <route url="/V1/webjump-pets/pets" method="PUT">
+        <service class="Webjump\Pets\Api\PetRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Webjump_Pets::edit"/>
+        </resources>
+    </route>
 </routes>

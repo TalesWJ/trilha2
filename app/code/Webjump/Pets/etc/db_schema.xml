@@ -9,7 +9,7 @@
                 comment="Name"/>
         <column xsi:type="text" name="description" nullable="true"
                 comment="Description"/>
-        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+        <column xsi:type="timestamp" name="created_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Creation Time"/>
         <constraint xsi:type="primary">
             <column name="entity_id"/>
