@@ -1,0 +1,37 @@
+type Query {
+    petkind(entity_id: Int!): PetKindOutput! @resolver(class: "Webjump\\Pets\\Model\\Resolver\\PetKind")
+    @doc(description: "The PetKind query returns information about a registered PetKind")
+    @cache(cacheable: false)
+}
+
+type Mutation {
+    createPetKind(input: PetKindCreateInput): PetKindOutput @resolver(class: "Webjump\\Pets\\Model\\Resolver\\CreatePetKind") @doc(description: "Add Pet Kind endpoint")
+    updatePetKind(input: PetKindUpdateInput): PetKindOutput @resolver(class: "Webjump\\Pets\\Model\\Resolver\\UpdatePetKind") @doc(description: "Update Pet Kind endpoint")
+    deletePetKind(entity_id: Int!): DeleteOutput @resolver(class: "Webjump\\Pets\\Model\\Resolver\\DeletePetKind") @doc(description: "Delete Pet Kind endpoint")
+}
+
+type DeleteOutput {
+    message: String! @doc(description: "Delete Message")
+}
+
+input PetKindCreateInput {
+    name: String! @doc(description: "The pet kind's name")
+    description: String! @doc(description: "The pet kind's description")
+}
+
+input PetKindUpdateInput {
+    name: String! @doc(description: "The pet kind's name")
+    description: String! @doc(description: "The pet kind's description")
+    entity_id: Int! @doc(reason: "Entity ID of the PetKind")
+}
+
+type PetKindOutput {
+    petkind: PetKind!
+}
+
+type PetKind @doc(description: "PetKind entity") {
+    created_at: String @doc(description: "Timestamp indicating when the petkind was created")
+    entity_id: String @doc(reason: "Entity ID of the PetKind")
+    name: String @doc(description: "The pet kind's description")
+    description: String @doc(description: "The pet kind's description")
+}
