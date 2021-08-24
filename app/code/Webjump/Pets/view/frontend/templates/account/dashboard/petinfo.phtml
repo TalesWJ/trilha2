@@ -1,0 +1,31 @@
+<?php
+
+/** @var \Webjump\Pets\Block\Account\Dashboard\PetInfo $block */
+?>
+<?php if ($block->isPetDisplayEnabled()): ?>
+    <div class="block block-dashboard-info">
+        <div class="block-title"><strong><?= $block->escapeHtml(__('Pet Information')) ?></strong></div>
+        <div class="block-content">
+            <div class="box box-information">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Pet Name')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <p>
+                        <?= $block->escapeHtml($block->getPetName()) ?><br>
+                    </p>
+                </div>
+            </div>
+            <div class="box box-information">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Pet Kind')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <p>
+                        <?= $block->escapeHtml($block->getPetKind()) ?><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
