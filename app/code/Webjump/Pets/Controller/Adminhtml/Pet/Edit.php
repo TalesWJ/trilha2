@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Webjump\Pets\Controller\Adminhtml\Pet;
 
+use Magento\Backend\Model\View\Result\Page;
 use Webjump\Pets\Api\PetRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -60,6 +61,7 @@ class Edit extends Action implements HttpGetActionInterface
             }
         }
 
+        /** @var Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->setActiveMenu('Webjump_Pets::webjumppets');
         $resultPage->getConfig()->getTitle()->prepend(__('Pet Kind'));

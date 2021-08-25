@@ -10,7 +10,6 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\Controller\Result\RedirectFactory;
 
 
 /**

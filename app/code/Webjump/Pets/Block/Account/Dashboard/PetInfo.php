@@ -10,7 +10,6 @@ use Magento\Customer\Helper\Session\CurrentCustomer;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Webjump\Pets\Api\PetRepositoryInterface;
 use Webjump\Pets\Api\PetRepositoryInterfaceFactory;
 
 class PetInfo extends Template
@@ -20,6 +19,9 @@ class PetInfo extends Template
      */
     private CurrentCustomer $currentCustomer;
 
+    /**
+     * @var PetRepositoryInterfaceFactory
+     */
     private PetRepositoryInterfaceFactory $petRepositoryFactory;
 
     /**
@@ -99,6 +101,7 @@ class PetInfo extends Template
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     protected function _toHtml()
     {

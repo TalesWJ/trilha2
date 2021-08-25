@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author      Webjump Core Team <dev@webjump.com.br>
+ * @copyright   2021 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ */
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         colors="true"
+         bootstrap="./Test/Unit/bootstrap.php"
+>
+    <testsuite name="Magento Unit Tests">
+        <directory suffix="Test.php">Test/Unit</directory>
+    </testsuite>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <file>registration.php</file>
+                <directory suffix=".php">./Test</directory>
+                <directory suffix=".php">./Setup</directory>
+                <directory suffix=".php">./vendor</directory>
+            </exclude>
+        </whitelist>
+
+        <blacklist>
+            <directory>Test</directory>
+            <directory>vendor</directory>
+        </blacklist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="./Test/Unit/_Coverage" lowUpperBound="35" highLowerBound="80"/>
+    </logging>
+
+</phpunit>

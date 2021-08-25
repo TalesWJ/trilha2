@@ -75,7 +75,7 @@ class PetRepository implements PetRepositoryInterface
         try {
             $this->resourceModel->save($pet);
         } catch (\Exception $e) {
-            throw new CouldNotSaveException($e->getMessage());
+            throw new CouldNotSaveException(__('Could not save Pet Kind.'));
         }
         return $pet;
     }

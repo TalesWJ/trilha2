@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.2/phpunit.xsd"
+         colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         bootstrap="./framework/bootstrap.php">
+    <testsuite name="Magento Unit Tests">
+        <directory suffix="Test.php">../../../vendor/!M2VENDOR_NAME!/*/Test/Unit</directory>
+    </testsuite>
+    <php>
+        <ini name="date.timezone" value="America/Los_Angeles"/>
+        <ini name="xdebug.max_nesting_level" value="200"/>
+    </php>
+    <filter>
+        <whitelist addUncoveredFilesFromWhiteList="true">
+            <directory suffix=".php">../../../vendor/!M2VENDOR_NAME!</directory>
+            <exclude>
+                <directory suffix=".phtml">../../../vendor/!M2VENDOR_NAME!</directory>
+                <directory>../../../vendor/!M2VENDOR_NAME!/*/Test</directory>
+                <directory>../../../vendor/!M2VENDOR_NAME!/*/Setup</directory>
+                <directory suffix=".Interface.php">../../../vendor/!M2VENDOR_NAME!</directory>
+                <directory suffix="registration.php">../../../vendor/!M2VENDOR_NAME!</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <listeners>
+        <listener class="Magento\Framework\TestFramework\Unit\Listener\ReplaceObjectManager"/>
+    </listeners>
+    <logging>
+        <log type="coverage-html" target="/var/www/magento/code/log/unit/report" charset="UTF-8" yui="true" highlight="true"/>
+        <log type="coverage-clover" target="/var/www/magento/code/log/unit/report/coverage.xml"/>
+        <log type="junit" target="/var/www/magento/code/log/unit/report/logfile.xml"/>
+    </logging>
+</phpunit>

@@ -43,6 +43,7 @@ interface PetRepositoryInterface
      * Delete Pet Kind
      *
      * @param PetInterface $pet
+     * @throws CouldNotDeleteException
      * @return void
      */
     public function delete(PetInterface $pet): void;
