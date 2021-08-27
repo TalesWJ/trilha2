@@ -16,6 +16,7 @@ class Collection extends AbstractCollection
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     protected function _construct()
     {

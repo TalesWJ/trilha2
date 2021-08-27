@@ -6,6 +6,9 @@ namespace Webjump\Pets\Model\ResourceModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Webjump\Pets\Api\Data\PetInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Pet extends AbstractDb
 {
     const SCHEMA_NAME = 'pet_kind';

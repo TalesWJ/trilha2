@@ -10,6 +10,7 @@ class Pet extends AbstractModel implements PetInterface
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     protected function _construct()
     {

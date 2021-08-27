@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Webjump\Pets\Model;
 
 use Exception;
