@@ -55,7 +55,7 @@ class Delete extends Action implements HttpPostActionInterface
         try {
             $petKind = $this->petRepository->getById((int)$petKindId);
             $this->petRepository->delete($petKind);
-            $this->messageManager->addSuccessMessage(__('Success! Pet Kind was saved with no errors.'));
+            $this->messageManager->addSuccessMessage(__('Success! Pet Kind was deleted with no errors.'));
             return $resultRedirect->setPath('*/*/');
         } catch (CouldNotDeleteException $e) {
             $this->messageManager->addErrorMessage(__("Could not delete the Pet Kind."));
